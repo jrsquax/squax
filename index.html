@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> squax | Portfolyo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #2c3e50;
+      font-weight: 500;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: #111;
+      color: #eee;
+    }
+    .dark-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #000304;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dark-toggle:hover {
+      background: #1a1a1a;
+      transform: scale(1.05);
+    }
+    @keyframes textFadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      50% { opacity: 0.5; transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    header {
+      background: #000304;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: white;
+      animation: textFadeIn 2s ease-in-out;
+    }
+    header p {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+    nav a:hover {
+      transform: scale(1.2) rotate(5deg);
+      color: #1da1f2;
+    }
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 3px;
+      background: #2c3e50;
+      left: 0;
+      bottom: -5px;
+      transition: width 0.5s ease;
+    }
+    section h2:hover::after {
+      width: 100%;
+    }
+    section p {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      position: relative;
+      background-image: url('rıdvan kalkan.png');
+      background-size: cover;
+      background-position: center;
+      padding: 3rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    .card a {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-decoration: none;
+    }
+    .card i {
+      font-size: 2.5rem;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .card:hover i {
+      transform: scale(1.4);
+    }
+    .fa-youtube {
+      color: #FF0000;
+    }
+    .fa-github {
+      color: #6e5494;
+    }
+    body.dark .card {
+      background: #1c1c1c;
+      color: #eee;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #000304;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-weight: 600;
+      color: white;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Karanlık Mod</button>
+  <header>
+    <h1>squax</h1>
+    <p>şimdilerde oyuncu</p>
+    <nav></nav>
+  </header>
+
+  <section>
+    <h2>Hakkımda</h2>
+    <p>Merhaba! Ben Squax, oynadığım oyunları sizlere sunuyorum. Umarım keyif alırsınız.</p>
+
+    <div class="cards">
+      <div class="card">
+        <a href="https://www.youtube.com/@jrsquax" target="_blank" title="Youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://github.com/jrsquax" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 squax. Tüm hakları saklıdır.
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
